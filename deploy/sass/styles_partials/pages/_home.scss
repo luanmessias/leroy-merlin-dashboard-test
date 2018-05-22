@@ -1,0 +1,261 @@
+// HOME
+// ====================================================================
+%home-cont {
+    background-color: $color-white;
+    margin: 0px;
+    margin-bottom: 60px;
+    .container {
+        width: 100%;
+        height: auto;
+        max-width: $res-xl;
+        margin: 0px auto;
+        @include flexbox(flex, column, nowrap, flex-start, center, flex-start);
+    }
+}
+
+%home-list {
+    .posts {
+        width: 100%;
+        margin: 0px 0px 20px 0px;
+        padding: 0px;
+        .post {
+            list-style: none;
+            margin-top: 20px;
+            @include flexbox(flex, row, nowrap, flex-start, flex-start, flex-start);
+            .number {
+                @include border-radius(3px);
+                text-align: center;
+                border: 1px solid $color-gray-light;
+                margin-right: 15px;
+                &:before {
+                    @include set-icon($fa-var-angle-up, 35px, bold, $color-orange);
+                    display: block;
+                    border-bottom: 1px solid $color-gray-light;
+                    padding: 0px 10px;
+                }
+                span {
+                    @include fonte($font-one, 800, 18px, $color-gray-dark);
+                    display: block;
+                    padding: 10px 10px;
+                }
+            }
+            .info {
+                .info_bottom {
+                    margin-top: 10px;
+                }
+                .post_url {
+                    display: block;
+                    @include fonte(verdana, 600, 12px, $color-gray-light);
+                    text-transform: uppercase;
+                }
+                .post_title {
+                    display: block;
+                    @include fonte($font-two, 400, 24px, $color-gray-dark);
+                }
+                .post_category {
+                    @include border-radius(20px);
+                    @include fonte($font-two, 400, 12px, $color-white);
+                    text-transform: capitalize;
+                    padding: 4px 14px;
+                    background-color: $color-gray;
+                    &.product_design {
+                        background-color: #00e2ad;
+                    }
+                    &.case_study {
+                        background-color: #f4973c;
+                    }
+                    &.ux_theory {
+                        background-color: #00bbff;
+                    }
+                    &.opinion {
+                        background-color: #4271d6;
+                    }
+                    &.discussion {
+                        background-color: #9342d6;
+                    }
+                    &.ux_ui {
+                        background-color: #d64242;
+                    }
+                }
+                .post_separate {
+                    width: 1px;
+                    height: 24px;
+                    background-color: $color-gray-light;
+                    display: inline-block;
+                    margin: 0px 17px;
+                }
+                .post_author_photo {
+                    margin-right: 10px;
+                    img {
+                        width: 20px;
+                        height: auto;
+                    }
+                }
+                .post_author {
+                    margin-right: 10px;
+                    @include fonte($font-two, 400, 12px, $color-orange);
+                    text-decoration: underline;
+                }
+                .post_date {
+                    @include fonte($font-two, 400, 12px, $color-gray);
+                }
+                .post_separate_circle {
+                    &:before {
+                        content: "•";
+                        color: $color-gray;
+                    }
+                    margin: 0px 17px;
+                }
+                .post_coments {
+                    &:before {
+                        @include set-icon($fa-var-comments, 18px, bold, $color-orange);
+                        margin-right: 5px;
+                    }
+                    span {
+                        @include fonte($font-two, 400, 12px, $color-orange);
+                        text-decoration: underline;
+                    }
+                }
+            }
+        }
+    }
+}
+
+%home-loadmore {
+    .loadMore {
+        @include box-sizing();
+        @include flexbox(flex, row, nowrap, center, center, center);
+        background-color: $color-gray-lighter;
+        width: 100%;
+        padding: 15px;
+        text-align: center;
+        cursor: pointer;
+        margin-bottom: 20px;
+        &:not(.inactive):hover {
+            div {
+                @extend %anim-rotateIn;
+                cursor: pointer;
+            }
+        }
+        div {
+            width: 22px;
+            margin-right: 10px;
+            &:before {
+                @include set-icon($fa-var-refresh, 25px, bold, $color-orange);
+                margin-right: 10px;
+                display: inline-block;
+            }
+        }
+        span {
+            @include fonte($font-two, 400, 18px, $color-orange);
+        }
+        &.inactive {
+            cursor: default;
+            background-color: $color-gray-light;
+            div {
+                &:before {
+                    @include set-icon($fa-var-ban, 25px, bold, $color-orange);
+                }
+            }
+            span {
+                font-size: 0px;
+                &:before {
+                    content: "No more content";
+                    font-size: 18px;
+                }
+            }
+        }
+        &.zeroLenght {
+            cursor: default;
+            background-color: $color-gray-light;
+            div {
+                &:before {
+                    @include set-icon($fa-var-meh-o, 25px, bold, $color-orange);
+                }
+            }
+            span {
+                font-size: 0px;
+                &:before {
+                    content: "Oops! No results matched your query.";
+                    font-size: 18px;
+                }
+            }
+        }
+    }
+}
+
+%home-filter{
+    .filter{
+        @include box-sizing();
+        @include flexbox(flex, row, nowrap, flex-start, center, center);
+        background-color: $color-gray-lighter;
+        width: 100%;
+        padding: 15px;
+        span{
+            @include fonte($font-one, 400, 18px, $color-gray-dark);
+        }
+        select{
+            @include border-radius(3px);
+            @include remove-shadow();
+            border: 1px solid $color-gray-light;
+            padding: 5px 10px;
+            margin: 0px 5px;
+        }
+    }
+}
+
+%home-breakpoints {
+    .container {
+        @include box-sizing();
+        @media (min-width: $res-md) {
+            .post {
+                .info{
+                    .info_bottom {
+                        @include flexbox(flex, row, wrap, flex-start, center, center);
+                    }
+                }
+            }
+        }
+        @media (max-width: $res-md) {
+            padding: 10px;
+        }
+        @media (max-width: $res-sm) {
+            .post {
+                .info{
+                    .info_bottom {
+                        @include box-sizing;
+                        >span,
+                        div{
+                            display: inline-block;
+                        }
+                        .post_category{
+                            display: block;
+                            text-align: center;
+                            margin-bottom: 10px;
+                        }
+                        .post_author_photo{
+                            margin-right: 5px;
+                        }
+                        .post_separate{
+                            display: none;
+                        }
+                        .post_separate_circle{
+                            display: none;
+                        }
+                    }
+                }
+            }
+        }
+    }
+}
+
+
+// HOME - CALLS
+// ====================================================================
+body {
+    @extend %home-cont;
+    @extend %home-list;
+    @extend %home-loadmore;
+    @extend %home-filter;
+    @extend %home-breakpoints;
+}

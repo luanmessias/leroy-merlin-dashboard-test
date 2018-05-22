@@ -1,0 +1,212 @@
+// HEADER
+// ====================================================================
+%header-base {
+    border-bottom: 1px solid $color-gray-light;
+    height: 95px;
+    width: 100%;
+    .header_cont {
+        width: 100%;
+        height: 100%;
+        max-width: $res-xl;
+        margin: 0px auto;
+    }
+}
+
+%header-logo {
+    #logo {
+        img {
+            max-width: 40px;
+        }
+    }
+}
+
+%header-nav {
+    .menu {
+        @include border-radius(4px);
+        cursor: pointer;
+        border: 1px solid $color-gray-light;
+        padding: 5px 10px;
+        margin-right: 17px;
+        &:before {
+            @include set-icon($fa-var-bars, 25px, 300, $color-gray-dark);
+        }
+    }
+}
+
+%header-search {
+    .search_bar {
+        @include border-radius(4px);
+        background-color: $color-gray-lighter;
+        &:before {
+            @include set-icon($fa-var-search, 18px, 300, $color-gray-light);
+            margin-left: 10px;
+            margin-top: 5px;
+        }
+    }
+    #search {
+        @include box-sizing();
+        @include border-radius(4px);
+        border: 0px;
+        padding-left: 10px;
+        background-color: $color-gray-lighter;
+        color: $color-gray;
+        width: 300px;
+        height: 40px;
+    }
+}
+
+%header-addPost {
+    .add_post {
+        @include transition-all(0.5s);
+        @include border-radius(3px);
+        @include fonte($font-one, 600, 14px, $color-white);
+        margin-left: auto;
+        background-color: $color-orange;
+        text-decoration: none;
+        padding: 10px 15px;
+        position: relative;
+        &:before {
+            @include set-icon($fa-var-plus, 18px, 300, $color-white);
+            margin-right: 25px;
+            position: relative;
+            top: 2px;
+        }
+        &:after {
+            content: "";
+            position: absolute;
+            top: 0;
+            left: 40px;
+            width: 1px;
+            height: 100%;
+            background-color: $color-orange-dark;
+        }
+        &:hover {
+            background-color: $color-orange-dark;
+        }
+    }
+}
+
+%header-profile {
+    .profile {
+        position: relative;
+        width: 40px;
+        height: 40px;
+        margin-left: 20px;
+        span {
+            @include border-radius(3px);
+            @include fonte($font-one, 600, 12px, $color-white);
+            position: absolute;
+            top: 10px;
+            left: -7px;
+            padding: 1px 6px;
+            background-color: $color-orange;
+        }
+        img {
+            width: 40px;
+            height: auto;
+        }
+    }
+}
+
+%header-animation {
+    @extend %anim-fadeIn;
+    .profile {
+        @include delay(.3s);
+        @extend %anim-fadeIn;
+    }
+    .add_post {
+        @include delay(.6s);
+        @extend %anim-fadeIn;
+    }
+    .search_bar {
+        @include delay(1s);
+        @extend %anim-fadeIn;
+    }
+    .menu {
+        @include delay(1.3s);
+        @extend %anim-fadeIn;
+    }
+    .logo_divider {
+        @include delay(1.6s);
+        @extend %anim-fadeIn;
+    }
+    #logo {
+        @include delay(2s);
+        @extend %anim-fadeInRight;
+    }
+}
+
+%header-breakpoints {
+    .header_cont {
+        @media (min-width: $res-xl) {
+            @include flexbox(flex, row, nowrap, flex-start, center, flex-start);
+            .logo_divider {
+                width: 1px;
+                height: 48px;
+                background-color: $color-gray-light;
+                display: inline-block;
+                margin: 0px 17px;
+            }
+        }
+        @media only screen and (min-width: $res-md) and (max-width: $res-xl) {
+            @include flexbox(flex, row, nowrap, space-around, center, flex-start);
+            .add_post {
+                margin: initial;
+            }
+        }
+    }
+    @media (max-width: $res-md)  {
+        @include box-sizing();
+        height: auto;
+        padding: 10px;
+        .header_cont {
+            @include flexbox(flex, row, wrap, space-around, center, center);
+        }
+        .logo_divider {
+            display: none;
+        }
+        #logo {
+            @include order(1);
+            margin-right: 10px;
+        }
+        .menu {
+            @include order(2);
+        }
+        .search_bar {
+            @include box-sizing;
+            @include order(5);
+            width: 100%;
+            margin-top: 10px;
+        }
+        .profile {
+            @include order(4);
+        }
+        .add_post {
+            @include order(3);
+        }
+    }
+    @media (max-width: $res-xs){
+        #search{
+            width: auto;
+        }
+        .profile {
+            @include order(3);
+        }
+        .add_post {
+            @include order(4);
+        }
+    }
+}
+
+// HEADER - CALLS
+// ====================================================================
+header {
+    @extend %header-base;
+    @extend %header-animation;
+    @extend %header-logo;
+    @extend %header-nav;
+    @extend %header-search;
+    @extend %header-addPost;
+    @extend %header-profile;
+    @extend %header-breakpoints;
+}

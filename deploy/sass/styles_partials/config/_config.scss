@@ -1,0 +1,24 @@
+$img-url: "assets/img";
+
+$res-xs: 360px;
+$res-sm: 400px;
+$res-md: 680px;
+$res-xl: 820px;
+
+// Extra small devices (portrait phones, less than 400px)
+@media (max-width: $res-xs) {  }
+
+// Medium devices (tablets, 600px and up)
+@media (max-width: $res-sm) {  }
+
+// Large devices (desktops, 750px and up)
+@media (min-width: $res-md) {  }
+
+// Extra large devices (large desktops, 820px and up)
+@media (min-width: $res-xl) {  }
+
+.hidden{
+    display: none;
+}
+
+

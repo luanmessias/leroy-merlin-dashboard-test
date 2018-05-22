@@ -1,0 +1,22 @@
+// CONFIGURATION
+// ====================================================================
+@import "styles_partials/config/mixins";
+@import "styles_partials/config/config";
+@import "styles_partials/config/font-awesome";
+@import "styles_partials/config/colors";
+@import "styles_partials/config/fonts";
+@import "styles_partials/config/normalize";
+@import "styles_partials/config/animations";
+
+
+// COMPONENTS
+// ====================================================================
+@import "styles_partials/components/header";
+@import "styles_partials/components/stickFooter";
+@import "styles_partials/components/footer";
+
+
+// PAGES
+// ====================================================================
+@import "styles_partials/pages/home";
+
